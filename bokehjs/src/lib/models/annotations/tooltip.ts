@@ -68,9 +68,9 @@ export class TooltipView extends AnnotationView {
       const {attachment} = this.model
       switch (attachment) {
         case "horizontal":
-          return sx < frame.bbox.hcenter ? "right" : "left"
+          return sx < this.canvas_view.bbox.hcenter ? "right" : "left"
         case "vertical":
-          return sy < frame.bbox.vcenter ? "below" : "above"
+          return sy < this.canvas_view.bbox.vcenter ? "below" : "above"
         default:
           return attachment
       }
@@ -99,7 +99,7 @@ export class TooltipView extends AnnotationView {
         break
       case "left":
         this.el.classList.add(bk_right)
-        right = (this.plot_view.layout.bbox.width - sx) + arrow_size
+        right = (this.canvas_view.bbox.width - sx) + arrow_size
         top = sy - this.el.offsetHeight/2
         break
       case "below":
